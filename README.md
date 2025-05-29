@@ -1,50 +1,54 @@
-# Welcome to your Expo app 👋
+🚀 Run the Currency Converter App with Your Own API Key
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+1. 📦 Install Dependencies
+If you haven't already installed node, yarn, or expo, start by installing Expo CLI:
 
-## Get started
+npm install --global expo-cli
 
-1. Install dependencies
+Then, install the project dependencies:
 
-   ```bash
-   npm install
-   ```
+yarn install
+# or
+npm install
 
-2. Start the app
+2. 🔑 Provide Your API Key
+This app requires an API key to fetch exchange rates. Here's how to use your own:
 
-   ```bash
-   npx expo start
-   ```
+Step 1: Create a .env file in the root directory
 
-In the output, you'll find options to open the app in a
+FX_API_KEY=your_api_key_here
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Replace your_api_key_here with your actual key (for example, from fxratesapi.com).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Step 2: Configure app.config.js (or app.json)
+If you're using app.config.js, make sure it exports the API key via extra:
 
-## Get a fresh project
+import 'dotenv/config';
 
-When you're ready, run:
+export default {
+  expo: {
+    name: "CurrencyConverter",
+    slug: "currency-converter",
+    extra: {
+      FX_API_KEY: process.env.FX_API_KEY,
+    },
+  },
+};
 
-```bash
-npm run reset-project
-```
+Make sure to install the dotenv package:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+npm install dotenv
 
-## Learn more
+3. ▶️ Start the App
 
-To learn more about developing your project with Expo, look at the following resources:
+npx expo start
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Expo DevTools will open in your browser, and you can run the app on a simulator or a physical device using the QR code.
 
-## Join the community
+📌 Notes
+The app remembers the last used currencies and amounts.
 
-Join our community of developers creating universal apps.
+It supports offline mode, using the last successfully fetched rates if there's no network connection.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+You don’t need to re-enter the API key after setup — it stays in .env.
+
