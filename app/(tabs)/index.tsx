@@ -101,7 +101,7 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      <View style={styles.amountWrapper}>jh vjh
+      <View style={styles.amountWrapper}>
         <Text style={styles.label}>Amount:</Text>
         <TextInput
           style={styles.input}
